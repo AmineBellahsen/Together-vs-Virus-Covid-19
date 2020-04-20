@@ -4,12 +4,10 @@ Team social distancing in factories project's code submission.
 
 Team members:
 
--Amine Bellahsen
+- Amine Bellahsen
+- Abderrahim Khalifa
+- Ilyas Rahhali
+- Hamza Sghir
 
--Abderrahim Khalifa
-
--Hamza Sghir
-
--Ilyas Rahhali
-
+  
 Devpost link: https://devpost.com/software/social-distancing-in-factories
