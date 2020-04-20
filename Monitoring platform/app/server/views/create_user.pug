@@ -1,0 +1,12 @@
+
+extends partials/layout_user
+
+block content
+
+	include account
+	include modals/alert
+
+block scripts
+	script(src='/js/views/create_user.js')
+	script(src='/js/controllers/signupController.js')
+	script(src='/js/form-validators/accountValidator.js')

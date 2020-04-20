@@ -1,0 +1,54 @@
+
+extends partials/layout_user
+
+block content
+    if businesses.length == 0
+        // Content Row
+        .row
+            .jumbotron.mx-auto(style="width:100%")
+                h4.display-5 You dont have a business setup yet!
+                //-p.lead
+                    | aa
+                //-hr.my-4
+                p
+                    | Click on add new business to get started!
+                a.btn.btn-primary.btn-md(href='/business/create' role='button') Add new business
+    else
+        .d-sm-flex.align-items-center.justify-content-between.mb-4
+            h1.h3.mb-0.text-gray-800 All Businesses
+        .row
+            each business in businesses
+                .col-lg-4.mb-4
+                    .card.shadow
+                        .card-body
+                            a.text-primary(href='/business/panel/' + business._id) #{business.name}
+                            .text-black-50.small 
+                                i.fas.fa-map-marker-alt
+                                |  #{business.addr}
+                            .text-black-50.small #{business.city}
+                        .card-footer
+                            a.btn.btn-white.btn-circle.btn-sm.float-right(href='/business/panel/' + business._id)
+                                i.fas.fa-arrow-right
+                            span.text-success.small
+                                i.fas.fa-id-badge
+                                |  00
+                            |  | 
+                            span.text-danger.small
+                                i.fas.fa-mask
+                                |  00
+                            |  | 
+                            span.text-warning.small
+                                i.fas.fa-exclamation-triangle
+                                |  00
+            .col-lg-4.mb-4
+                a(href="/business/create", style="width: 100%;color: inherit;text-decoration: inherit;height: 160px;border-radius: 5px;background-color: #e8e9ec;justify-content: center;display: flex;align-items: center;")
+                    i.fas.fa-plus
+
+
+
+    
+block scripts
+    // Page level plugins
+    script(src='vendor/chart.js/Chart.min.js')
+    // Page level custom scripts
+    script(src='/js/views/list_business.js')

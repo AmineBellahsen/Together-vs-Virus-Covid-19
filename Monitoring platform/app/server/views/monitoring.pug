@@ -1,0 +1,51 @@
+
+extends partials/layout_user
+
+block content
+    .row
+        // Area Chart
+        .col-xl-12.col-lg-12
+            .card.shadow.mb-4
+                // Card Header - Dropdown
+                .card-header.py-3.d-flex.flex-row.align-items-center.justify-content-between
+                    h6.m-0.font-weight-bold.text-primary Video Streaming
+                // Card Body
+                .card-body
+                    .form-group.row.margin-zero
+                        label.col-sm-2.col-form-label.col-form-label-sm Business Unit:
+                        .col-sm-4
+                            select.custom-select#business-list(name='business', placehoder="")
+                                option(value="all") Select a Business
+                                each business in businesses
+                                    option(value = business._id)= business.name
+                        label.col-sm-2.col-form-label.col-form-label-sm Available Cameras:
+                        .col-sm-4
+                            select.custom-select#camera-list(name='camera', placehoder="")
+                                option(value="") Select a Camera
+                                option(value="cam-1") Mixed Camera
+                                option(value="cam-1") Camera 1
+                    .row.invisible#content-monitoring
+                        .col-sm-8
+                            //iframe(width='100%', height='450px', src='//www.youtube.com/embed/c0NUkpaukj0?rel=0&showinfo=0&modestbranding=1&autoplay=1&controls=0&disablekb=1&loop=1&playlist=c0NUkpaukj0', frameborder='0')
+                            <div style="width:100%;height:0px;position:relative;padding-bottom:56.250%;"><iframe src="https://streamable.com/e/7bwhuc?autoplay=1" frameborder="0" width="100%" height="100%" allowfullscreen style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe></div>
+                        .col-sm-4
+                            .card.mb-4
+                                // Card Header - Dropdown
+                                .card-header.py-3.d-flex.flex-row.align-items-center.justify-content-between
+                                    h6.m-0.font-weight-bold.text-secondary Alerts Log
+                                // Card Body
+                                .card-body
+                                    .small
+                                        | > 13h00: Mask (Zone #5)
+                                        br
+                                        | > 12h45: Mask (Zone #3)
+                                        br
+                                        | > 11h26: Mask (Zone #1)
+                                        br
+                                        | > 10h55: Mask (Zone #5)
+                                        br
+                                        | > 08h15: Mask (Zone #5)
+                        
+        
+block scripts
+    script(src='/js/views/monitoring.js')

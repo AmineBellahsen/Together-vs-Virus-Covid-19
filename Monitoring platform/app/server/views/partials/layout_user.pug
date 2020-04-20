@@ -1,0 +1,177 @@
+- user = typeof(udata) != 'undefined' ? udata : { }
+
+doctype html
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(name='description' content='')
+    meta(name='author' content='')
+    title E-safe - Dashboard
+    // Custom fonts for this template
+    link(href='/vendor/fontawesome-free/css/all.min.css' rel='stylesheet' type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i' rel='stylesheet')
+    // Custom styles for this template
+    link(href='/css/sb-admin-2.min.css' rel='stylesheet')
+
+body
+    // Page Wrapper
+    // Topbar
+    nav.navbar.navbar-expand.navbar-light.bg-white.topbar.static-top.shadow
+        // Sidebar Toggle (Topbar)
+        //button#sidebarToggleTop.btn.btn-link.d-md-none.rounded-circle.mr-3
+        //    i.fa.fa-bars
+        img(src="/img/logo.png", height="40px")
+        // Topbar Navbar
+        ul.navbar-nav.ml-auto
+            // Nav Item - Alerts
+            li.nav-item.dropdown.no-arrow.mx-1
+                a#alertsDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                    i.fas.fa-bell.fa-fw
+                    // Counter - Alerts
+                    span.badge.badge-danger.badge-counter 3+
+                // Dropdown - Alerts
+                //- .dropdown-list.dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby='alertsDropdown')
+                //-     h6.dropdown-header
+                //-         | Alerts Center
+                //-     a.dropdown-item.d-flex.align-items-center(href='#')
+                //-         .mr-3
+                //-             .icon-circle.bg-primary
+                //-                 i.fas.fa-file-alt.text-white
+                //-         div
+                //-             .small.text-gray-500 December 12, 2019
+                //-             span.font-weight-bold A new monthly report is ready to download!
+                //-     a.dropdown-item.d-flex.align-items-center(href='#')
+                //-         .mr-3
+                //-             .icon-circle.bg-success
+                //-                 i.fas.fa-donate.text-white
+                //-         div
+                //-             .small.text-gray-500 December 7, 2019
+                //-             |                                         $290.29 has been deposited into your account!
+                //-     a.dropdown-item.d-flex.align-items-center(href='#')
+                //-         .mr-3
+                //-             .icon-circle.bg-warning
+                //-                 i.fas.fa-exclamation-triangle.text-white
+                //-         div
+                //-             .small.text-gray-500 December 2, 2019
+                //-             |                                         Spending Alert: We&apos;ve noticed unusually high spending for your account.
+                //-     a.dropdown-item.text-center.small.text-gray-500(href='#') Show All Alerts
+            .topbar-divider.d-none.d-sm-block
+            // Nav Item - User Information
+            li.nav-item.dropdown.no-arrow
+                a#userDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                    span.mr-2.d-none.d-lg-inline.text-gray-600.small #{me.name}
+                    img.img-profile.rounded-circle(src='https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-64.png')
+                // Dropdown - User Information
+                .dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby='userDropdown')
+                    a.dropdown-item(href='#')
+                        i.fas.fa-user.fa-sm.fa-fw.mr-2.text-gray-400
+                        |                                     Profile
+                    a.dropdown-item(href='#')
+                        i.fas.fa-cogs.fa-sm.fa-fw.mr-2.text-gray-400
+                        |                                     Settings
+                    a.dropdown-item(href='#')
+                        i.fas.fa-list.fa-sm.fa-fw.mr-2.text-gray-400
+                        |                                     Activity Log
+                    .dropdown-divider
+                    a.dropdown-item(href='/logout')
+                        i.fas.fa-sign-out-alt.fa-sm.fa-fw.mr-2.text-gray-400
+                        |                                     Logout
+    // End of Topbar
+    #wrapper
+        
+        // Sidebar
+        ul#accordionSidebar.navbar-nav.bg-gradient-primary.sidebar.sidebar-dark.accordion
+            // Sidebar - Brand
+            //-a.sidebar-brand.d-flex.align-items-center.justify-content-center(href='index.html')
+                .sidebar-brand-icon.rotate-n-15
+                    i.fas.fa-laugh-wink
+                .sidebar-brand-text.mx-3
+                    | E-safe
+            div(style="margin-top:6rem")
+            li.nav-item.active
+                a.nav-link(href='/home')
+                    i.fas.fa-fw.fa-tachometer-alt
+                    span Dashboard
+            // Divider
+            hr.sidebar-divider.my-0
+            // Nav Item - Dashboard
+            li.nav-item#list-business
+                a.nav-link(href='/business/list')
+                    i.fas.fa-fw.fa-folder
+                    span Businesses
+            li.nav-item#monitoring
+                a.nav-link(href='/monitoring')
+                    i.fas.fa-fw.fa-video
+                    span Video Streaming
+            
+            li.nav-item
+                a.nav-link(href='#')
+                    i.fas.fa-fw.fa-diagnoses
+                    span Staff Metrics
+                        
+            li.nav-item#config
+                a.nav-link.collapsed(href='#' data-toggle='collapse' data-target='#configSubMenu' aria-expanded='false' aria-controls='collapseTwo')
+                    i.fas.fa-fw.fa-cog
+                    span Configuration
+                #configSubMenu.collapse(aria-labelledby='headingTwo' data-parent='#accordionSidebar' style='')
+                    .bg-white.py-2.collapse-inner.rounded
+                        h6.collapse-header Create:
+                        a.collapse-item#newbusiness(href='/business/create') Add new business
+                        a.collapse-item#newuser(href='/user/create') Add new user
+            // Divider
+            hr.sidebar-divider
+            li.nav-item
+                a.nav-link(href='#')
+                    i.fas.fa-fw.fa-cog
+                    span Settings
+            li.nav-item
+                a.nav-link(href='#')
+                    i.fas.fa-fw.fa-info-circle
+                    span Help
+            
+        // End of Sidebar
+        // Content Wrapper
+        #content-wrapper.d-flex.flex-column
+            // Main Content
+            #content
+                
+                // Begin Page Content
+                .container-fluid
+                    div(style="margin-top:5.5rem")
+                    block content
+                // /.container-fluid
+                // End of Main Content
+                // Footer
+                //- footer.sticky-footer.bg-white
+                //-     .container.my-auto
+                //-         .copyright.text-center.my-auto
+                //-             span Copyright &copy; Your Website 2019
+                // End of Footer
+                // End of Content Wrapper
+    // End of Page Wrapper
+    // Scroll to Top Button
+    a.scroll-to-top.rounded(href='#page-top')
+        i.fas.fa-angle-up
+    //- // Logout Modal
+    //- #logoutModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+    //-     .modal-dialog(role='document')
+    //-         .modal-content
+    //-             .modal-header
+    //-                 h5#exampleModalLabel.modal-title Ready to Leave?
+    //-                 button.close(type='button' data-dismiss='modal' aria-label='Close')
+    //-                     span(aria-hidden='true') &times;
+    //-             .modal-body Select &quot;Logout&quot; below if you are ready to end your current session.
+    //-             .modal-footer
+    //-                 button.btn.btn-secondary(type='button' data-dismiss='modal') Cancel
+    //-                 a.btn.btn-primary(href='login.html') Logout
+    // Bootstrap core JavaScript
+    script(src='/vendor/jquery/jquery.min.js')
+    script(src='/vendor/bootstrap/js/bootstrap.bundle.min.js')
+    // Core plugin JavaScript
+    script(src='/vendor/jquery-easing/jquery.easing.min.js')
+    // Custom scripts for all pages
+    script(src='/js/sb-admin-2.min.js')
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js")
+
+    block scripts

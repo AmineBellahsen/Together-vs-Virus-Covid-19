@@ -1,0 +1,61 @@
+
+
+extends partials/layout_user
+
+block content
+	- business = typeof(bdata) != 'undefined' ? bdata : { }
+
+	#business-form-container.center-vertical
+	if !user
+		.m-2
+			img(src="img/logo.png", height="40px")
+	form.card.card-body.bg-light(method='post', enctype="multipart/form-data")#business-form
+		h2
+		h6#sub
+		hr
+		.form-group.row
+			label.col-sm-3.col-form-label.col-form-label-sm Business Type
+			.col-sm-9
+				select.custom-select#btype-tf(name='btype')
+					option(value=0) Plant
+					option(value=1) Office
+		
+		.form-group.row
+			label.col-sm-3.col-form-label.col-form-label-sm Business Name
+			.col-sm-9
+				input.form-control#bname-tf(type='text', name='bname', value= business.name)
+		
+		.form-group.row
+			label.col-sm-3.col-form-label.col-form-label-sm Address
+			.col-sm-9
+				input.form-control#baddr-tf(type='text', name='baddr', value= business.addr)
+
+		.form-group.row
+			label.col-sm-3.col-form-label.col-form-label-sm City
+			.col-sm-9
+				input.form-control#bcity-tf(type='text', name='bcity', value= business.city)
+
+		.form-group.row
+			label.col-sm-3.col-form-label.col-form-label-sm Country
+			.col-sm-9
+				select.custom-select#bcountry-tf(name='bcountry')
+					each item in countries
+						option(selected=item.name == user.country, value = item.short)= item.name
+		.form-group.row.margin-zero
+			label.col-sm-3.col-form-label.col-form-label-sm Image Plan
+			.col-sm-9
+				input.form-control#bplan-tf(type='file', name='bplan', accept="image/*")
+		hr
+		.form-buttons
+			button(type='button')#business-form-btn1.btn.btn-outline-dark
+			button(type='submit')#business-form-btn2.btn.btn-primary
+
+	// display form errors in a custom modal window //
+
+	include modals/form-errors
+	include modals/alert
+
+block scripts
+	script(src='/js/views/create_business.js')
+	//script(src='/js/controllers/businessController.js')
+	script(src='/js/form-validators/businessValidator.js')
